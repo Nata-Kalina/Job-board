@@ -1,0 +1,41 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  job_title: MyString
+  job_description: MyText
+  job_company: MyString
+  job_location: MyString
+  job_type: MyString
+  associated_company_id: MyString
+  remote: false
+  job_salary: MyString
+  application_deadline: 2024-02-01
+  published_at: 2024-02-01 20:57:13
+  expiration_date: 2024-02-01
+  job_requirements: MyText
+  job_responsibilities: MyText
+  job_benefits: MyString
+  associated_used_id: MyString
+  job_category_id: MyString
+  views_count: 1
+  applications_count: 1
+
+two:
+  job_title: MyString
+  job_description: MyText
+  job_company: MyString
+  job_location: MyString
+  job_type: MyString
+  associated_company_id: MyString
+  remote: false
+  job_salary: MyString
+  application_deadline: 2024-02-01
+  published_at: 2024-02-01 20:57:13
+  expiration_date: 2024-02-01
+  job_requirements: MyText
+  job_responsibilities: MyText
+  job_benefits: MyString
+  associated_used_id: MyString
+  job_category_id: MyString
+  views_count: 1
+  applications_count: 1
