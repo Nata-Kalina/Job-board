@@ -1,15 +1,8 @@
 class Application < ApplicationRecord
+    belongs_to :account
 
     validates :resume_attachment, presence: true
-    validates :status, presence: true
-    validates :applied_at, presence: true
-    validates :associated_job_id, presence: true
-    validates :applicant_id, presence: true
-    validates :status, inclusion: { in: %w[pending accepted rejected] }
+    validates :status, presence: true, inclusion: { in: %w[applied received pending incomplete accepted rejected] }
+    validates_associated :account
 
-    validates_associated :user
-    validates_associated :job
-
-    belongs_to :user
-    belongs_to :job
 end
