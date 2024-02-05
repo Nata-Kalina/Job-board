@@ -10,17 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_02_021451) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_05_012234) do
+  create_table "accounts", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.integer "user_phone_number"
+    t.string "user_location"
+    t.text "about_user"
+    t.string "user_role"
+    t.string "user_linkedin_profile"
+    t.string "user_website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
   create_table "applications", force: :cascade do |t|
     t.string "resume_attachment"
     t.string "cover_letter"
     t.string "status"
     t.datetime "applied_at"
     t.text "notes"
-    t.string "associated_job_id"
-    t.string "applicant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_applications_on_account_id"
   end
 
   create_table "companies", force: :cascade do |t|
@@ -33,12 +48,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_02_021451) do
     t.string "company_location"
     t.string "company_email"
     t.integer "company_phone_number"
-    t.string "company_user_id"
     t.string "company_linkedin_profile"
     t.string "company_facebook_profile"
     t.string "company_youtube_channel"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_companies_on_account_id"
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -47,7 +63,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_02_021451) do
     t.string "job_company"
     t.string "job_location"
     t.string "job_type"
-    t.string "associated_company_id"
     t.boolean "remote"
     t.string "job_salary"
     t.date "application_deadline"
@@ -62,21 +77,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_02_021451) do
     t.integer "applications_count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.integer "user_phone_number"
-    t.string "user_email"
-    t.string "user_password"
-    t.string "user_location"
-    t.text "about_user"
-    t.string "user_role"
-    t.string "user_linkedin_profile"
-    t.string "user_website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "accounts", "users"
+  add_foreign_key "applications", "accounts"
+  add_foreign_key "companies", "accounts"
+  add_foreign_key "jobs", "companies"
 end
