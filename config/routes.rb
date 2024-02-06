@@ -8,10 +8,13 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :accounts do
         resources :applications
-        resources :companies 
-        resources :jobs 
+        resources :companies do
+         resources :jobs, only: [:create, :update, :destroy] 
+        end
+        resources :jobs, only: [:index, :show]
       end 
     end
   end
   
+
 end

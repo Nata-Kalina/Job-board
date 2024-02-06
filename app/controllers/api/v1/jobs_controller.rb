@@ -11,15 +11,16 @@ class Api::V1::JobsController < ApplicationController
         @jobs = Job.all
         render json: {jobs: @jobs}
     end
-  
+
+
     # GET /accounts/:account_id/jobs/:id
     def show
       render json: @job, status: 200
     end
   
-    # POST /accounts/:account_id/jobs
+    # POST /accounts/:account_id/companies/:company_id/jobs
     def create
-        @company = Company.find(job_params[:company_id])
+        @company = Company.find(params[:company_id])
         @job = @company.jobs.new(job_params)
         @job.company_id = @company.id
       if @job.save
@@ -31,9 +32,9 @@ class Api::V1::JobsController < ApplicationController
       end
     end
   
-    # PUT /accounts/:account_id/jobs/:id
+    # PUT /accounts/:account_id/company/:company_id/jobs/:id
     def update
-      @company = Company.find(job_params[:company_id])
+      @company = Company.find(params[:company_id])
       if @company.id != @job.company_id
         render json: { message: "The current user is not authorized for that action."}, status: :unauthorized
       else
@@ -45,9 +46,9 @@ class Api::V1::JobsController < ApplicationController
       end
     end   
       
-    # DELETE /accounts/:account_id/jobs/:id
+    # DELETE /accounts/:account_id/company/:company_id/jobs/:id
     def destroy
-      @company = Company.find(job_params[:company_id])
+      @company = Company.find(params[:company_id])
       if @company.id != @job.company_id
         render json: { message: "The current user is not authorized for that action."}, status: :unauthorized
       else
