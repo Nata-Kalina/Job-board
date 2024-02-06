@@ -4,6 +4,7 @@ class Api::V1::ApplicationsController < ApplicationController
 
     before_action :is_user_logged_in
     before_action :set_account
+    before_action :set_job, only: [:create]
     before_action :set_application, only: [:show, :update, :destroy]
     before_action :check_access
    
@@ -21,8 +22,10 @@ class Api::V1::ApplicationsController < ApplicationController
     # POST /accounts/:account_id/applications
     def create
         @account = Account.find(params[:account_id])
+        @job = Job.find(application_params[:job_id])
         @application = @account.applications.new(application_params)
         @application.account_id = @account.id
+        @application.job_id = @job.id
         if @application.save
           render json: @application, status: 201
         else
@@ -58,7 +61,7 @@ class Api::V1::ApplicationsController < ApplicationController
     private
   
     def application_params
-      params.require(:application).permit(:resume_attachment, :cover_letter, :status, :applied_at, :notes, :associated_job_id, :applicant_id)
+      params.require(:application).permit(:resume_attachment, :cover_letter, :status, :applied_at, :notes, :job_id, :applicant_id)
     end
   
     def set_application
@@ -66,7 +69,11 @@ class Api::V1::ApplicationsController < ApplicationController
     end
 
     def set_account
-      @set_account = Account.find_by(id: params[:account_id])
+      @account = Account.find_by(id: params[:account_id])
+    end
+
+    def set_job
+      @job = Job.find_by(id: application_params[:job_id])
     end
 
     def check_access 
