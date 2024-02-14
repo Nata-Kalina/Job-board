@@ -7,4 +7,5 @@ class User < ApplicationRecord
     validates :password, password_strength: true, presence: true
 
     has_one :account, dependent: :destroy
+    has_one :company, dependent: :destroy
 end

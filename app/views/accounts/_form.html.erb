@@ -1,0 +1,59 @@
+<%= form_with(model: account) do |form| %>
+    <% if account.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(account.errors.count, "error") %> prohibited this account from being saved:</h2>
+  
+        <ul>
+          <% account.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :first_name, style: "display: block" %>
+      <%= form.text_field :first_name %>
+    </div>
+  
+    <div>
+      <%= form.label :last_name, style: "display: block" %>
+      <%= form.text_field :last_name %>
+    </div>
+  
+    <div>
+      <%= form.label :user_phone_number, style: "display: block" %>
+      <%= form.text_field :user_phone_number %>
+    </div>
+  
+    <div>
+      <%= form.label :user_location, style: "display: block" %>
+      <%= form.text_field :user_location %>
+    </div>
+
+    <div>
+      <%= form.label :about_user, style: "display: block" %>
+      <%= form.text_field :about_user %>
+    </div>
+
+    <div>
+      <%= form.label :user_role, style: "display: block" %>
+      <%= form.text_field :user_role %>
+    </div>
+
+    <div>
+      <%= form.label :user_linkedin_profile, style: "display: block" %>
+      <%= form.text_field :user_linkedin_profile %>
+    </div>
+
+    <div>
+      <%= form.label :user_website, style: "display: block" %>
+      <%= form.text_field :user_website %>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
+  

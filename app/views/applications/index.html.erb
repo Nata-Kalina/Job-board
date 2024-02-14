@@ -1,0 +1,63 @@
+<h1>Application</h1>
+
+<div id="application" class="mx-auto">
+
+<p>
+    <strong>Resume Attachment:</strong>
+    <%= application.resume_attachment %>
+  </p>
+
+  <p>
+    <strong>Cover Letter:</strong>
+    <%= application.cover_letter %>
+  </p>
+
+  <p>
+    <strong>Application status:</strong>
+    <%= application.status %>
+  </p>
+
+  <p>
+    <strong>Applied At:</strong>
+    <%= application.applied_at %>
+  </p>
+
+  <p>
+    <strong>Created At:</strong>
+    <%= application.created_at %>
+  </p>
+
+  <p>
+    <strong>Updated At:</strong>
+    <%= application.updated_at %>
+  </p>
+
+  <p>
+    <strong>Job Title:</strong>
+    <%= application.job_id.job_title %>
+  </p>
+
+  <p>
+    <strong>Associated Company:</strong>
+    <%= application.job_id.company_id.company_title %>
+  </p>
+<br>
+<div>
+  <p>
+    <strong>Actions:</strong>
+  </p>
+  <p>
+    <%= link_to "Edit", edit_application_path(job), class:"btn btn-primary" %>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal-<%= application.id%>">Delete</button> 
+  </p>
+  <%= render partial: 'deleteModal', locals: { application: application } %>
+</div>
+<br>
+<div>
+    <p><%= link_to "All applications", applications_path, class:"btn btn-primary"  %></p>
+</div>
+
+
+

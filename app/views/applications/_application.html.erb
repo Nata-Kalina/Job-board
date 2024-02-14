@@ -1,0 +1,42 @@
+<div id="<%= dom_id application %>">
+  <p>
+    <strong>Resume:</strong>
+    <%= application.resume_attachment %>
+  </p>
+
+  <p>
+    <strong>Cover Letter:</strong>
+    <%= application.cover_letter %>
+  </p>
+
+  <p>
+    <strong>Status:</strong>
+    <%= application.status %>
+  </p>
+
+  <p>
+    <strong>Applied At:</strong>
+    <%= application.applied_at %>
+  </p>
+
+  <p>
+    <strong>Notes:</strong>
+    <%= application.notes %>
+  </p>
+
+  <p>
+    <strong>Created At:</strong>
+    <%= application.created_at %>
+  </p>
+
+  <p>
+    <strong>Job Title:</strong>
+    <%= application.job_id.job_title %>
+  </p>
+
+  <p>
+    <strong>Company:</strong>
+    <%= application.job_id.company_id.company_title %>
+  </p>
+
+</div>

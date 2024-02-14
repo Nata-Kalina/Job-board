@@ -1,0 +1,69 @@
+<div class="container">
+  <%= render @account %>
+
+  <div>
+    <%= link_to "Edit this account", edit_account_path(@account), class:"btn btn-primary" %> |
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal-<%= @account.id%>">Delete</button>
+  </div>
+
+  <%= render "deleteModal", customer: @customer %>
+
+  <div id="applications">
+    <h3>Applications:</h3>
+    <% if @account.applications.present? %>
+    <table style="border-collapse: collapse; width: 100%; border: 1px solid #000;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #000;">Application ID</th>
+        <th style="border: 1px solid #000;">Job ID</th>
+        <th style="border: 1px solid #000;">Job Title</th>
+        <th style="border: 1px solid #000;">Company</th>
+        <th style="border: 1px solid #000;">Applied At</th>
+        <th colspan="3" style="border: 1px solid #000;">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @account.applications.each do |application| %>
+      <tr style="border: 1px solid black;">
+        <td  style="border: 1px solid black;">
+          <%=account.application.id%>
+        </td>
+        <td  style="border: 1px solid black;">
+          <%=account.application.job_id%>
+        </td>
+        <td  style="border: 1px solid black;">
+          <%=account.application.job_id.job.job_title%>
+        </td>
+        <td  style="border: 1px solid black;">
+          <%=account.application.job_id.job.job_company%>
+        </td>
+        <td  style="border: 1px solid black;">
+          <%=account.application.applied_at%>
+        </td>
+        <td>
+          <%= link_to "Show", account, class:"btn btn-primary"%> 
+        </td>
+        <td>
+          <%= link_to "Edit", edit_account_path(account), class:"btn btn-primary" %>
+        </td>
+        <td>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal-<%= account.id%>">Delete</button> 
+        </td>
+      </tr>
+    <%= render partial: 'deleteModal', locals: { account: account } %>
+    <% end %>
+  <tbody>
+    </table>
+    <%= link_to "All Applications", application_path, class:"btn btn-primary" %>
+    <% else %>
+      <p>No applications</p>
+    <% end %>
+
+  </div>
+</div>
+
+
+
+
+
+

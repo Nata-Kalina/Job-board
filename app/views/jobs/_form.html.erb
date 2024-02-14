@@ -1,0 +1,89 @@
+<%= form_with(model: job) do |form| %>
+    <% if job.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(job.errors.count, "error") %> prohibited this job from being saved:</h2>
+  
+        <ul>
+          <% job.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div>
+      <%= form.label :job_title, style: "display: block" %>
+      <%= form.text_field :job_title %>
+    </div>
+  
+    <div>
+      <%= form.label :job_description, style: "display: block" %>
+      <%= form.text_field :job_description %>
+    </div>
+  
+    <div>
+      <%= form.label :job_company, style: "display: block" %>
+      <%= form.text_field :job_company %>
+    </div>
+  
+    <div>
+      <%= form.label :job_location, style: "display: block" %>
+      <%= form.text_field :job_location %>
+    </div>
+
+    <div>
+      <%= form.label :job_type, style: "display: block" %>
+      <%= form.text_field :job_type %>
+    </div>
+
+    <div>
+      <%= form.label :remote, style: "display: block" %>
+      <%= form.text_field :remote %>
+    </div>
+
+    <div>
+      <%= form.label :job_salary, style: "display: block" %>
+      <%= form.text_field :job_salary %>
+    </div>
+
+    <div>
+      <%= form.label :application_deadline, style: "display: block" %>
+      <%= form.text_field :application_deadline %>
+    </div>
+
+    <div>
+      <%= form.label :published_at, style: "display: block" %>
+      <%= form.text_field :published_at %>
+    </div>
+
+    <div>
+      <%= form.label :expiration_date, style: "display: block" %>
+      <%= form.text_field :expiration_date %>
+    </div>
+
+    <div>
+      <%= form.label :job_requirements, style: "display: block" %>
+      <%= form.text_field :job_requirements %>
+    </div>
+
+    <div>
+      <%= form.label :job_responsibilities, style: "display: block" %>
+      <%= form.text_field :job_responsibilities %>
+    </div>
+
+    <div>
+      <%= form.label :job_benefits, style: "display: block" %>
+      <%= form.text_field :job_benefits %>
+    </div>
+
+    <div>
+      <%= form.label :job_benefits, style: "display: block" %>
+      <%= form.text_field :job_benefits %>
+    </div>
+  
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
+  

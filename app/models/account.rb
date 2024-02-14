@@ -5,5 +5,4 @@ class Account < ApplicationRecord
     validates :user_phone_number, presence: true, numericality: { only_integer: true }, length: { is: 10 }
     validates :user_role, presence: true, inclusion: { in: %w[jobseeker employer admin] }
     has_many :applications, dependent: :destroy
-    has_one :company, dependent: :destroy
 end

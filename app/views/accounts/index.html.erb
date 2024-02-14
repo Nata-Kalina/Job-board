@@ -1,0 +1,78 @@
+<h1>Account</h1>
+
+<div id="account" class="mx-auto">
+
+<p>
+    <strong>First name:</strong>
+    <%= account.first_name %>
+  </p>
+
+  <p>
+    <strong>Last name:</strong>
+    <%= account.last_name %>
+  </p>
+
+  <p>
+    <strong>Phone:</strong>
+    <%= account.user_phone_number %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= account.user_location %>
+  </p>
+
+  <p>
+    <strong>About:</strong>
+    <%= account.about_user %>
+  </p>
+
+  <p>
+    <strong>Role:</strong>
+    <%= account.user_role %>
+  </p>
+
+  <p>
+    <strong>User LinkedIn Profile:</strong>
+    <%= account.user_linkedin_profile %>
+  </p>
+
+  <p>
+    <strong>User Website:</strong>
+    <%= account.user_user_website %>
+  </p>
+
+  <p>
+    <strong>Account Created At:</strong>
+    <%= account.created_at %>
+  </p>
+
+  <p>
+    <strong>Account Updated At:</strong>
+    <%= account.updated_at %>
+  </p>
+
+  <p>
+    <strong>User ID:</strong>
+    <%= account.user_id %>
+  </p>
+<br>
+<div>
+  <p>
+    <strong>Actions:</strong>
+  </p>
+  <p>
+    <%= link_to "Edit", edit_customer_path(customer), class:"btn btn-primary" %>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal-<%= account.id%>">Delete</button> 
+  </p>
+  <%= render partial: 'deleteModal', locals: { account: account } %>
+</div>
+<br>
+<div>
+    <p><%= link_to "All applications", applications_path, class:"btn btn-primary"  %></p>
+</div>
+
+
+

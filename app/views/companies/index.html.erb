@@ -1,0 +1,93 @@
+<h1>Company</h1>
+
+<div id="company" class="mx-auto">
+
+<p>
+    <strong>Company Title:</strong>
+    <%= company.company_title %>
+  </p>
+
+  <p>
+    <strong>About Company:</strong>
+    <%= company.about_company %>
+  </p>
+
+  <p>
+    <strong>Company Benefits:</strong>
+    <%= company.company_benefits %>
+  </p>
+
+  <p>
+    <strong>Industry:</strong>
+    <%= company.company_industry %>
+  </p>
+
+  <p>
+    <strong>Company Website:</strong>
+    <%= company.company_website %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= company.company_location %>
+  </p>
+
+  <p>
+    <strong>Company Email:</strong>
+    <%= company.company_email %>
+  </p>
+
+  <p>
+    <strong>Phone Number:</strong>
+    <%= company.company_phone_number %>
+  </p>
+
+  <p>
+    <strong>LinkedIn:</strong>
+    <%= company.company_linkedin_profile %>
+  </p>
+
+  <p>
+    <strong>Facebook:</strong>
+    <%= company.company_facebook_profile %>
+  </p>
+
+  <p>
+    <strong>Youtube:</strong>
+    <%= company.company_youtube_channel %>
+  </p>
+
+  <p>
+    <strong>Company created at:</strong>
+    <%= company.created_at %>
+  </p>
+
+  <p>
+    <strong>Company Updated At:</strong>
+    <%= company.updated_at %>
+  </p>
+
+  <p>
+    <strong>User ID:</strong>
+    <%= company.user_id %>
+  </p>
+<br>
+<div>
+  <p>
+    <strong>Actions:</strong>
+  </p>
+  <p>
+    <%= link_to "Edit", edit_company_path(company), class:"btn btn-primary" %>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal-<%= company.id%>">Delete</button> 
+  </p>
+  <%= render partial: 'deleteModal', locals: { company: company } %>
+</div>
+<br>
+<div>
+    <p><%= link_to "All jobs", jobs_path, class:"btn btn-primary"  %></p>
+</div>
+
+
+

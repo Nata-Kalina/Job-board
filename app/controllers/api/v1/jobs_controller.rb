@@ -4,21 +4,22 @@ class Api::V1::JobsController < ApplicationController
 
     before_action :is_user_logged_in
     before_action :set_job, only: [:show, :update, :destroy]
-    before_action :set_account
   
-    # GET /accounts/:account_id/jobs
+    # GET /jobs
     def index
         @jobs = Job.all
         render json: {jobs: @jobs}
     end
 
 
-    # GET /accounts/:account_id/jobs/:id
+    # GET /jobs/:id
     def show
+      @job.update(views: @job.views + 1)
       render json: @job, status: 200
+
     end
   
-    # POST /accounts/:account_id/companies/:company_id/jobs
+    # POST /companies/:company_id/jobs
     def create
         @company = Company.find(params[:company_id])
         @job = @company.jobs.new(job_params)
@@ -32,7 +33,7 @@ class Api::V1::JobsController < ApplicationController
       end
     end
   
-    # PUT /accounts/:account_id/company/:company_id/jobs/:id
+    # PUT /companies/:company_id/jobs/:id
     def update
       @company = Company.find(params[:company_id])
       if @company.id != @job.company_id
@@ -46,7 +47,7 @@ class Api::V1::JobsController < ApplicationController
       end
     end   
       
-    # DELETE /accounts/:account_id/company/:company_id/jobs/:id
+    # DELETE /company/:company_id/jobs/:id
     def destroy
       @company = Company.find(params[:company_id])
       if @company.id != @job.company_id
@@ -67,8 +68,5 @@ class Api::V1::JobsController < ApplicationController
       @job = Job.find_by(id: params[:id])
     end
 
-    def set_account
-      @account = Account.find(params[:account_id])
-    end
     
 end

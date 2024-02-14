@@ -76,3 +76,6 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+gem 'bootstrap', '~> 5.3', '>= 5.3.2'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.8'
+gem 'sassc-rails', '~> 2.1', '>= 2.1.2'

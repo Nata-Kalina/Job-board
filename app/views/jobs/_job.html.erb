@@ -1,0 +1,74 @@
+<div id="<%= dom_id job %>">
+  <p>
+    <strong>Job Title:</strong>
+    <%= job.job_title %>
+  </p>
+
+  <p>
+    <strong>Job Description:</strong>
+    <%= job.job_description %>
+  </p>
+
+  <p>
+    <strong>Company:</strong>
+    <%= job.company_id.company_title %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= job.job_location %>
+  </p>
+
+  <p>
+    <strong>Job Type:</strong>
+    <%= job.job_type %>
+  </p>
+
+  <p>
+    <strong>Remote:</strong>
+    <%= job.remote %>
+  </p>
+
+  <p>
+    <strong>Salary:</strong>
+    <%= job.job_salary %>
+  </p>
+
+  <p>
+    <strong>Application Deadline:</strong>
+    <%= job.application_deadline %>
+  </p>
+
+  <p>
+    <strong>Published At:</strong>
+    <%= job.published_at %>
+  </p>
+
+  <p>
+    <strong>Expiration Date:</strong>
+    <%= job.expiration_date %>
+  </p>
+
+  <p>
+    <strong>Requirements:</strong>
+    <%= job.job_requirements %>
+  </p>
+
+  <p>
+    <strong>Responsibilities:</strong>
+    <%= job.job_responsibilities %>
+  </p>
+
+  <p>
+    <strong>Benefits:</strong>
+    <%= job.job_benefits %>
+  </p>
+
+  <p>
+    <strong>Created At:</strong>
+    <%= company.created_at %>
+  </p>
+
+  <h6><%= pluralize(job.views, "view") %><h6>
+
+</div>

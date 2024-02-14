@@ -4,25 +4,22 @@ class Api::V1::CompaniesController < ApplicationController
 
     before_action :is_user_logged_in
     before_action :set_company, only: [:show, :update, :destroy]
-    before_action :set_account
-
-
-    # GET /accounts/:account_id/companies
+    
+    # GET /companies
     def index
       @companies = Company.all
       render json: {companies: @companies}
     end
   
-    # GET /accounts/:account_id/companies/:id
+    # GET /companies/:id
     def show
         render json: @company, status: 200
       end
   
-    # POST /accounts/:account_id/companies
+    # POST /companies
     def create
-      @account = Account.find(params[:account_id])
-      @company = @account.build_company(company_params)
-      @company.account_id = @account.id
+      @company = Company.new(company_params)
+      @company.user_id = current_user.id
       if @company.save
         render json: @company, status: 201
       else
@@ -32,7 +29,7 @@ class Api::V1::CompaniesController < ApplicationController
       end
     end
   
-    # PUT /acoounts/:account_id/companies/:id
+    # PUT /companies/:id
     def update
       if check_access
         if @company.update(company_params)
@@ -46,7 +43,7 @@ class Api::V1::CompaniesController < ApplicationController
       end
     end
   
-    # DELETE /accounts/:account_id/companies/:id
+    # DELETE /companies/:id
     def destroy
       if check_access
         @company.destroy
@@ -63,13 +60,9 @@ class Api::V1::CompaniesController < ApplicationController
     def set_company
       @company = Company.find(params[:id])
     end
-
-    def set_account
-      @account = Account.find(params[:account_id])
-    end
   
     def check_access
-      if (@company.account_id != @account.id) 
+      if (@company.user_id != current_user.id) 
         render json: { message: "The current user is not authorized for that action."}, status: :unauthorized
         return false
       end

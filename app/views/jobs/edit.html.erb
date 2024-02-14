@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Editing Job</h1>
+
+  <%= render "form", job: @job %>
+
+  <br>
+
+  <div>
+    <%= link_to "Show this Job", @job, class:"btn btn-primary" %> |
+    <%= link_to "Go to companies", companies_path, class:"btn btn-primary" %> |
+    <%= link_to "Go to jobs", jobs_path, class:"btn btn-primary" %>
+  </div>
+</div>
+
